@@ -57,12 +57,6 @@
 
 			success: function(xml) {
 
-				var canDownload = $(xml).find("sizes").first().attr("candownload");
-				if (canDownload == 0) {
-					$("#loading").hide();
-					displayMessage("Downloads are disabled for this photo");
-					return;
-				}
 				var size = $(xml).find("size");
 				var thumbUrl = size.first().attr("source");
 				var bigUrl = size.last().attr("source");
@@ -159,19 +153,6 @@
 				.addClass("loadMore")
 				.appendTo( $("#imgContainer") );
 		}
-	}
-
-	// display a message that can be hidden
-	function displayMessage(msg) {
-
-		$("<a/>")
-			.text(msg)
-			.attr("href", "#")
-			.on("click", function() {
-				$(this).remove();
-			})
-			.addClass("loadMore")
-			.appendTo( $("#imgContainer") );
 	}
 
 	// Check if Auto Download is active
